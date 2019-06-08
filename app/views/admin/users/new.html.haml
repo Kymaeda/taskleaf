@@ -1,0 +1,7 @@
+%h1 ユーザの新規登録
+
+.nav.justify-content-end
+  = link_to 'ユーザ一覧へ戻る', admin_users_path, class: "nav-link"
+
+= render partial: 'form', locals: { user: @user }
+

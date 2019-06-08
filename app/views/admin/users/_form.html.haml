@@ -1,0 +1,30 @@
+- if user.errors.present?
+  %ul#error_explanation
+    - user.errors.full_messages.each do |message|
+      %li= message
+
+= form_with model: [:admin, user], local: true do |form|
+
+  .form-group
+    = form.label :name
+    = form.text_field :name, class: 'form-control'
+
+  .form-group
+    = form.label :email
+    = form.text_field :email, class: 'form-control'
+
+  .form-check
+    = form.label :admin, class: 'form-check-label' do
+      = form.check_box :admin, class: 'form-control'
+      管理者権限
+
+  .form-group
+    = form.label :password
+    = form.password_field :password, class: 'form-control'
+
+  .form-group
+    = form.label :password_confirmation
+    = form.password_field :password_confirmation, class: 'form-control'
+
+  .actions
+    = form.submit nil, class: 'btn btn-outline-info'
