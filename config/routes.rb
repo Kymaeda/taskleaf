@@ -3,6 +3,7 @@
 #                    Prefix Verb   URI Pattern                                                                              Controller#Action
 #                     login GET    /login(.:format)                                                                         sessions#new
 #                           POST   /login(.:format)                                                                         sessions#create
+#                    logout DELETE /logout(.:format)                                                                        sessions#destroy
 #               admin_users GET    /admin/users(.:format)                                                                   admin/users#index
 #                           POST   /admin/users(.:format)                                                                   admin/users#create
 #            new_admin_user GET    /admin/users/new(.:format)                                                               admin/users#new
@@ -27,12 +28,14 @@
 #      rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
 
 Rails.application.routes.draw do
-  get  '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
+  get  '/login'   , to: 'sessions#new'
+  post '/login'   , to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+
   namespace :admin do
     resources :users
   end
+
   root to: 'tasks#index'
   resources :tasks
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
