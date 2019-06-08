@@ -9,7 +9,15 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     .apptitle.navbar.navbar-expand-md.navbar-light.bg-light
-      =link_to 'Taskleaf', root_path, class: 'navbar-brand'
+      .navbar-brand Taskleaf
+
+      %ul.navbar-nav.ml-auto
+        - if current_user
+          %li.nav-item= link_to 'タスク一覧', root_path, class: 'nav-link'
+          %li.nav-item= link_to 'ユーザ一覧', admin_users_path, class: 'nav-link'
+          %li.nav-item= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
+        - else
+          %li.nav-item= link_to 'ログイン', login_path, class: 'nav-link'
     .container
       - if flash.notice.present?
         .alert.alert-success= flash.notice
