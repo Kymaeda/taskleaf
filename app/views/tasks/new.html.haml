@@ -1,2 +1,15 @@
-%h1 Tasks#new
-%p Find me in app/views/tasks/new.html.erb
+%h1 タスクの新規登録
+
+
+= form_with model: @task, local: true do |form|
+
+  .form-group
+    = form.label :name
+    = form.text_field :name, class: 'form-control'
+
+  .form-group
+    = form.label :description
+    = form.text_area :description, class: 'form-control'
+
+  .actions
+    = form.submit nil, class: 'btn btn-outline-info'
