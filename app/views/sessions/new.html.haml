@@ -1,0 +1,13 @@
+%h1 ログイン
+
+= form_with scope: :session, local: true do |form|
+  .form-group
+    = form.label :email, 'メールアドレス'
+    = form.text_field :email, class: 'form-control', id: 'session_email'
+
+  .form-group
+    = form.label :password, 'パスワード'
+    = form.password_field :password, class: 'form-control', id: 'session_password'
+
+  .actions
+    = form.submit 'ログインする', class: 'btn btn-outline-info'
