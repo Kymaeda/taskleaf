@@ -11,4 +11,6 @@
     .apptitle.navbar.navbar-expand-md.navbar-light.bg-light
       =link_to 'Taskleaf', root_path, class: 'navbar-brand'
     .container
+      - if flash.notice.present?
+        .alert.alert-success= flash.notice
       = yield
