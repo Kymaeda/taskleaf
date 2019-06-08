@@ -1,2 +1,3 @@
-%h1 Tasks#edit
-%p Find me in app/views/tasks/edit.html.erb
+%h1 タスク【 #{@task.name} 】を編集しています
+
+= render partial: 'form', locals: { task: @task }
