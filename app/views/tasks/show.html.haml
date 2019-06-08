@@ -1,2 +1,13 @@
-%h1 Tasks#show
-%p Find me in app/views/tasks/show.html.erb
+%h1 タスク【 #{@task.name} 】の詳細情報
+
+%table.table.table-hover
+  %tbody
+    %tr
+      %th= Task.human_attribute_name(:name)
+      %td= @task.name
+    %tr
+      %th= Task.human_attribute_name(:description)
+      %td= simple_format(h(@task.description), {}, sanitize: false, wrapper_tag: "div")
+    %tr
+      %th= Task.human_attribute_name(:created_at)
+      %td= @task.created_at
