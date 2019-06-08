@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update]
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
     @tasks = Task.all
@@ -30,6 +30,12 @@ class TasksController < ApplicationController
       redirect_to root_path, notice: "タスク【#{@task.name}】を更新しました。"
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @task.destroy
+      redirect_to root_path, notice: "タスク【#{@task.name}】を削除しました。"
     end
   end
 
