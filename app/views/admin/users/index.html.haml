@@ -6,6 +6,7 @@
     %tr
       %th= User.human_attribute_name(:name)
       %th= User.human_attribute_name(:email)
+      %th= User.human_attribute_name(:locale)
       %th= User.human_attribute_name(:admin)
       %th
   %tbody
@@ -13,6 +14,7 @@
       %tr
         %td= link_to user.name, admin_user_path(user)
         %td= user.email
+        %td= user.locale == 'ja' ? '日本語' : '英語'
         %td= user.admin? ? 'あり' : 'なし'
         %td
           = link_to '編集', edit_admin_user_path(user), class: 'btn btn-sm btn-outline-info mr-3'
