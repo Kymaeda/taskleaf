@@ -13,10 +13,18 @@
     = form.label :email
     = form.text_field :email, class: 'form-control'
 
+  .form-group
+    = form.label :locale, class: 'form-check-label' do
+      .radio_buttons
+        = form.radio_button :locale, 'en',  class: 'form-control'
+        English
+        = form.radio_button :locale, 'ja',  class: 'form-control'
+        Japanese
+
   .form-check
     = form.label :admin, class: 'form-check-label' do
       = form.check_box :admin, class: 'form-control'
-      管理者権限
+      admin
 
   .form-group
     = form.label :password
