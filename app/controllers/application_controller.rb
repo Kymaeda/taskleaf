@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user
+  before_action :set_locale
   before_action :login_required
 
   private
@@ -9,5 +10,9 @@ class ApplicationController < ActionController::Base
 
     def login_required
       redirect_to login_path unless current_user
+    end
+
+    def set_locale
+      I18n.locale = current_user&.locale || :ja
     end
 end
