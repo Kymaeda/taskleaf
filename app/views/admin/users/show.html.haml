@@ -1,6 +1,12 @@
-%h1 タスク【 #{@user.name} 】の詳細情報
+%h1.mt-3 ユーザ【 #{@user.name} 】の詳細情報
 
-%table.table.table-hover
+.show_buttons
+  = link_to '編集', edit_admin_user_path(@user), class: 'btn btn-sm btn-outline-info mr-3'
+  = link_to '削除', [:admin, @user], method: :delete, data: { confirm: "【#{@user.name}】を削除してよろしいですか？"}, class: 'btn btn-sm btn-outline-secondary mr-3'
+  = link_to 'ユーザ一覧へ戻る', admin_users_path, class: "btn btn-sm btn-outline-secondary"
+
+
+%table.table.table-hover.mt-3.md-3
   %tbody
     %tr
       %th= User.human_attribute_name(:name)
@@ -9,9 +15,23 @@
       %th= User.human_attribute_name(:email)
       %td= @user.email
     %tr
+      %th= User.human_attribute_name(:locale)
+      %td= @user.locale == 'ja' ? '日本語' : '英語'
+    %tr
       %th= User.human_attribute_name(:admin)
-      %td= user.admin? ? 'あり' : 'なし'
+      %td= @user.admin? ? 'あり' : 'なし'
 
-= link_to '編集', edit_admin_user_path(@user), class: 'btn btn-sm btn-outline-info mr-3'
-= link_to '削除', [:admin, @user], method: :delete, data: { confirm: "【#{@user.name}】を削除してよろしいですか？"}, class: 'btn btn-sm btn-outline-secondary mr-3'
-= link_to 'ユーザ一覧へ戻る', admin_users_path, class: "btn btn-sm btn-outline-secondary"
+.users_tasks_table.mt-5.ml-5
+  %h5 タスク一覧
+
+  %table.table.table-hover
+    %tbody
+      %tr
+        %th= Task.human_attribute_name(:name)
+        %th= Task.human_attribute_name(:description)
+        %th= Task.human_attribute_name(:created_at)
+      - @user.tasks.each do |task|
+        %tr
+          %td= link_to task.name, task_path(task)
+          %td= task.description
+          %td= task.created_at
