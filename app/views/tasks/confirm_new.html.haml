@@ -1,0 +1,16 @@
+= form_with model: @task, local: true do |form|
+  %table.table.table-hover
+    %tr
+      %th= Task.human_attribute_name(:name)
+      %td= @task.name
+      = form.hidden_field :name
+    %tr
+      %th= Task.human_attribute_name(:description)
+      %td= simple_format(@task.description)
+      = form.hidden_field :description
+    %tr
+      %th= Task.human_attribute_name(:status_value)
+      %td= @task.status_value
+      = form.hidden_field :status_value
+  = form.submit '戻る', name: 'back', class: 'btn btn-outline-secondary mr-3'
+  = form.submit '登録する', class: 'btn btn-outline-info'

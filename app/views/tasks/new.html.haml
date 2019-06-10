@@ -1,3 +1,23 @@
 %h1 タスクの新規登録
 
-= render partial: 'form', locals: { task: @task }
+- if @task.errors.present?
+  %ul#error_explanation
+    - task.errors.full_messages.each do |message|
+      %li= message
+
+= form_with model: @task, local: true, url: confirm_new_task_path do |form|
+
+  .form-group
+    = form.label :name
+    = form.text_field :name, class: 'form-control'
+
+  .form-group
+    = form.label :description
+    = form.text_area :description, class: 'form-control'
+
+  .form-group
+    = form.label  :status_value
+    = form.select :status_value, Task.status_values.keys, prompt: 'ステータスを選択してください', class: 'form-control'
+
+  .actions
+    = form.submit nil, class: 'btn btn-outline-info'
