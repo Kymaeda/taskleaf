@@ -26,6 +26,14 @@ ja:
           password_confirmation: パスワード（確認）
           created_at: 登録日時
           updated_at: 更新日時
+    data:
+      task:
+        status_value:
+          notyet: 未着手
+          ongoing: 対応中
+          waiting: 対応待
+          pending: 中断
+          completed: 完了
   date:
     abbr_day_names:
     - 日
