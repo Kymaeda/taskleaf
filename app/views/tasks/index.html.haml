@@ -6,9 +6,9 @@
     .col-sm-10
       = form.search_field :name_cont, class: 'form-control'
   .form-group.row
-    = form.label :created_at_gteq, Task.human_attribute_name(:created_at), class: 'col-sm-2 col-form-label'
+    = form.label :updated_at_gteq, Task.human_attribute_name(:updated_at), class: 'col-sm-2 col-form-label'
     .col-sm-10
-      = form.search_field :created_at_gteq, class: 'form-control'
+      = form.search_field :updated_at_gteq, class: 'form-control'
   .form-group.row
     = form.submit class: 'btn btn-outline-info ml-3'
     = link_to 'クリア', tasks_path, class: 'btn btn-outline-secondary ml-3'
@@ -19,14 +19,14 @@
     %tr
       %th= Task.human_attribute_name(:status_value)
       %th= Task.human_attribute_name(:name)
-      %th= Task.human_attribute_name(:created_at)
+      %th= Task.human_attribute_name(:updated_at)
       %th
   %tbody
     - @tasks.each do |task|
       %tr
-        %td= task.status_value
+        %td= t(task.status_value, scope: [:activerecord, :data, :task, :status_value])
         %td= link_to task.name, task_path(task)
-        %td= l(task.created_at, format: :long)
+        %td= l(task.updated_at, format: :long)
         %td
           = link_to '編集', edit_task_path(task), class: 'btn btn-sm btn-outline-info mr-3'
           = link_to '削除', task, method: :delete, data: { confirm: "【#{task.name}】を削除してよろしいですか？"}, class: 'btn btn-sm btn-outline-secondary mr-3'
