@@ -17,7 +17,8 @@
 %table.table.table-hover
   %thead
     %tr
-      %th= Task.human_attribute_name(:status_value)
+      -# %th= Task.human_attribute_name(:status_value)
+      %th= sort_link(@q, :status_value, [:status_value, "updated_at desc"])
       %th= Task.human_attribute_name(:name)
       %th= Task.human_attribute_name(:updated_at)
       %th
