@@ -14,6 +14,7 @@
 #                           DELETE /admin/users/:id(.:format)                                                               admin/users#destroy
 #                      root GET    /                                                                                        tasks#index
 #          confirm_new_task POST   /tasks/new/confirm(.:format)                                                             tasks#confirm_new
+#              import_tasks POST   /tasks/import(.:format)                                                                  tasks#import
 #                     tasks GET    /tasks(.:format)                                                                         tasks#index
 #                           POST   /tasks(.:format)                                                                         tasks#create
 #                  new_task GET    /tasks/new(.:format)                                                                     tasks#new
@@ -40,5 +41,6 @@ Rails.application.routes.draw do
   root to: 'tasks#index'
   resources :tasks do
     post :confirm, action: :confirm_new, on: :new
+    post :import, on: :collection
   end
 end
