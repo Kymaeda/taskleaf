@@ -17,5 +17,9 @@
     = form.label  :status_value
     = form.select :status_value, Task.status_values.keys, prompt: 'ステータスを選択してください', class: 'form-control'
 
+  .form-group
+    = form.label :image
+    = form.file_field :image, class: 'form-control'
+
   .actions
     = form.submit nil, class: 'btn btn-outline-info'
