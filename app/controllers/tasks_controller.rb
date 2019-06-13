@@ -57,6 +57,13 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.require(:task).permit(:name, :description, :status_value)
+      params.
+        require(:task).
+          permit(
+            :name,
+            :description,
+            :status_value,
+            :image,
+          )
     end
 end
