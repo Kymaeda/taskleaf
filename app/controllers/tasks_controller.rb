@@ -37,6 +37,7 @@ class TasksController < ApplicationController
     end
 
     if @task.save
+      SampleJob.perform_later
       redirect_to root_path, notice: "タスク【#{@task.name}】を登録しました。"
     else
       render :new
