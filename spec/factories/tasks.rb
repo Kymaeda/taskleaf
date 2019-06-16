@@ -17,7 +17,9 @@
 
 FactoryBot.define do
   factory :task do
-    name { "MyString" }
-    description { "MyText" }
+    name { 'テスト' }
+    description { 'これはRspecとFactoryBotのテストです。' }
+    status_value { 0 }
+    user
   end
 end
